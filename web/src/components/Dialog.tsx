@@ -27,6 +27,7 @@ interface DialogData {
   id: string;
   title: string;
   cards: CardData[];
+  keepFocus: boolean;
 }
 
 const CenteredContainer: React.FC = () => {
@@ -77,6 +78,7 @@ const CenteredContainer: React.FC = () => {
       await fetchNui("dialogClose", {
         id: dialog!.id,
         cardIndex: cardIndex,
+        keepFocus: dialog!.keepFocus
       });
       hideDialog();
     } catch (error) {
