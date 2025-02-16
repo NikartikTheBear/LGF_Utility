@@ -131,6 +131,7 @@ function OpenDialog(data)
         id = dialogID,
         title = data.title,
         cards = CARDS_STEPPER
+        keepFocus = false
     })
 
     LocalPlayer.state.DialogOpened = true
@@ -169,7 +170,7 @@ RegisterNUICallback('dialogClose', function(data, cb)
     if currentCam then
         DestroyCamera()
     end
-    SetNuiFocus(false, false)
+    SetNuiFocus(data.keepFocus, data.keepFocus)
     local dialog = DIALOGS[data.id]
     if dialog then
         local success = dialog:handleClose(data.cardIndex)
